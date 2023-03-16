@@ -10,7 +10,7 @@ public class ReqresBaseUrl {
 
     @Before//Her test methodunda once calısır .
     public void  setUp(){
-        spec =new RequestSpecBuilder().setBaseUri("https://reqres.in/api/users").build();
+        spec =new RequestSpecBuilder().setBaseUri("https://reqres.in/api/").build();
     }
 
 

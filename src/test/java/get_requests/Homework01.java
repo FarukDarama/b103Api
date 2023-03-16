@@ -7,8 +7,7 @@ import org.junit.Test;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.equalTo;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class Homework01 extends ReqresBaseUrl {
 
@@ -66,9 +65,10 @@ public class Homework01 extends ReqresBaseUrl {
         Response response = given().when().spec(spec).get("/{id}");
         response.prettyPrint();
         //Do Assertion
-        response.then().statusCode(404).statusLine("HTTP/1.1 404 Not Found").header("Server","cloudflare");
-        assertFalse(response.asString().isEmpty());
-
+        assertEquals(404, response.statusCode());
+        assertEquals("HTTP/1.1 404 Not Found", response.statusLine());
+        assertEquals("cloudflare", response.getHeader("Server"));
+        assertEquals(2, response.asString().replaceAll("\\s","").length());//2,{} cift
     }
 
     /*
@@ -93,12 +93,12 @@ public class Homework01 extends ReqresBaseUrl {
     @Test
     public void homework03() {
         spec.pathParam("id","2");
-        Response response = given().when().spec(spec).get("/{id}");
+        Response response= given().when().spec(spec).get("/{id}");
         response.prettyPrint();
 
-        response.then().statusCode(200).contentType(ContentType.JSON).body("email",equalTo("janet.weaver@reqres.in"),"first_name",
-                equalTo("Janet"),"last_name",equalTo("Weaver"));
-
+        response.then().statusCode(200).
+                contentType(ContentType.JSON).body("data.email",equalTo("janet.weaver@reqres.in"),"data.first_name",equalTo("Janet"),
+                        "data.last_name",equalTo("Weaver"),"support.text",equalTo("To keep ReqRes free, contributions towards server costs are appreciated!"));
 
     }
 }

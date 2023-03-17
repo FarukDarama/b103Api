@@ -29,8 +29,8 @@ public class Get07 extends JsonPlaceHolderBaseUrl {
 
     @Test
     public void get07() {
-      //set the     URL
-        spec.pathParam("first","todos");
+        //set the     URL
+        spec.pathParam("first", "todos");
 
         //set the expected data
 
@@ -40,17 +40,17 @@ public class Get07 extends JsonPlaceHolderBaseUrl {
         response.prettyPrint();
 
         //Do Assertion
-        Assert.assertEquals(200,response.statusCode());
-      //2)Print all ids greater than 190 on the console ==> id si 190 dan buyuk olanlari konsola yazdirin
-      JsonPath jsonPath = response.jsonPath();
-      List<Object> list =  jsonPath.getList("findAll{it.id>190}.userId");//Groovy java temelli bir programala dilidir
+        Assert.assertEquals(200, response.statusCode());
+        //2)Print all ids greater than 190 on the console ==> id si 190 dan buyuk olanlari konsola yazdirin
+        JsonPath jsonPath = response.jsonPath();//body nın içindeki bilgilere tek tek ulasabilmek için
+        List<Object> list = jsonPath.getList("findAll{it.id>190}.userId");//Groovy java temelli bir programala dilidir
         System.out.println("list = " + list);
-      Assert.assertEquals(10,list.size());
-      //3)Print all userIds whose ids are less than 5 on the console ==> id si 5 den kucuk olan tum userid lerini konsolunu yazdirin
-      // Assert that the number of userIds whose ids are less than 5 is 4 ==> id si 5 den kucuk olan 4 tane userId oldugunu dogrulayin
-        List<Integer> userIdList = jsonPath.getList("findAll{it.id<5}.userId");
+        Assert.assertEquals(10, list.size());
+        //3)Print all userIds whose ids are less than 5 on the console ==> id si 5 den kucuk olan tum userid lerini konsolunu yazdirin
+        // Assert that the number of userIds whose ids are less than 5 is 4 ==> id si 5 den kucuk olan 4 tane userId oldugunu dogrulayin
+        List<Integer> userIdList = jsonPath.getList("findAll{it.id<5 || it.userId==9}.userId");
         System.out.println("userIdList = " + userIdList);
-       //4)Print all titles whose ids are less than 5 ==> ıd si 5 den kucuk olan tum basliklari yazdirin
+        //4)Print all titles whose ids are less than 5 ==> ıd si 5 den kucuk olan tum basliklari yazdirin
         List<String> titleList = jsonPath.getList("findAll{it.id<5}.title");
         System.out.println("titleList = " + titleList);
         //Assert that "delectus aut autem" is one of the titles whose id is less than 5 ==> id si 5 den kucuk olan datalarin birinin

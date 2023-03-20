@@ -99,6 +99,7 @@ public class Get09 extends HerOkuAppBaseUrl {
         assertEquals(bookingdatesMap.get("checkin"),((Map)actualData.get("bookingdates")).get("checkin"));
         assertEquals(bookingdatesMap.get("checkout"),((Map)actualData.get("bookingdates")).get("checkout"));
         assertEquals(expectedData.get("additionalneeds"),actualData.get("additionalneeds"));
-
     }
+
+
 }

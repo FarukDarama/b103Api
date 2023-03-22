@@ -1,4 +1,4 @@
-package get_requests;
+package homeworks;
 
 import base_urls.ReqresBaseUrl;
 import io.restassured.http.ContentType;

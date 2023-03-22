@@ -6,6 +6,7 @@ import org.codehaus.jackson.map.ObjectMapper;
 import org.junit.Assert;
 import org.junit.Test;
 import test_data.JsonPlaceHolderTestData;
+import util.ObjectMapperUtils;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -44,7 +45,7 @@ public class Post05ObjectMapper_Map extends JsonPlaceHolderBaseUrl {
         Response response = given().spec(spec).body(expectedData).post("{first}");
         response.prettyPrint();
         //Do Assertion
-      Map<String,Object> actualData = new ObjectMapper().readValue(response.asString(), HashMap.class);
+      Map<String,Object> actualData = ObjectMapperUtils.convertJsonToJava(response.asString(), HashMap.class);
         System.out.println("actualData = " + actualData);
         Assert.assertEquals(201,response.statusCode());
         Assert.assertEquals(expectedData.get("userId"),actualData.get("userId"));

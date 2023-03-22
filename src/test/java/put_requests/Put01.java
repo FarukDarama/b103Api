@@ -36,35 +36,35 @@ public class Put01 extends JsonPlaceHolderBaseUrl {
     @Test
     public void put01() {
         //set the url
-        spec.pathParams("first","todos","second",198);
+        spec.pathParams("first", "todos", "second", 198);
         //Set the expected data
-        Map<String,Object> expectedData = new HashMap<>();
-        expectedData.put("userId",21.0);
-        expectedData.put("title","Wash the dishes");
-        expectedData.put("completed",false);
+        Map<String, Object> expectedData = new HashMap<>();
+        expectedData.put("userId", 21.0);
+        expectedData.put("title", "Wash the dishes");
+        expectedData.put("completed", false);
         System.out.println("expectedData = " + expectedData);
 
-      //Send the request get the response
-     Response response = given().spec(spec).contentType(ContentType.JSON).body(expectedData).put("/{first}/{second}");
-     response.prettyPrint();
+        //Send the request get the response
+        Response response = given().spec(spec).contentType(ContentType.JSON).body(expectedData).put("/{first}/{second}");
+        response.prettyPrint();
 
-     //Do Assertion
-     Map<String,Object> actualData =   response.as(HashMap.class);
+        //Do Assertion
+        Map<String, Object> actualData = response.as(HashMap.class);
         System.out.println("actualData = " + actualData);
-        Assert.assertEquals(200,response.statusCode());
-        Assert.assertEquals(expectedData.get("completed"),actualData.get("completed"));
-        Assert.assertEquals(expectedData.get("title"),actualData.get("title"));
-        Assert.assertEquals(expectedData.get("userId"),actualData.get("userId"));
+        Assert.assertEquals(200, response.statusCode());
+        Assert.assertEquals(expectedData.get("completed"), actualData.get("completed"));
+        Assert.assertEquals(expectedData.get("title"), actualData.get("title"));
+        Assert.assertEquals(expectedData.get("userId"), actualData.get("userId"));
 
     }
 
     @Test//dinamik yöntem
     public void put01b() {
         //set the url
-        spec.pathParams("first","todos","second",198);
+        spec.pathParams("first", "todos", "second", 198);
         //Set the expected data
-        JsonPlaceHolderTestData obj =new JsonPlaceHolderTestData();
-        Map<String,Object> expectedData = obj.expectedData(21,"Wash the dishes",false);
+        JsonPlaceHolderTestData obj = new JsonPlaceHolderTestData();
+        Map<String, Object> expectedData = obj.expectedData(21, "Wash the dishes", false);
 
         System.out.println("expectedData = " + expectedData);
 
@@ -73,12 +73,12 @@ public class Put01 extends JsonPlaceHolderBaseUrl {
         response.prettyPrint();
 
         //Do Assertion
-        Map<String,Object> actualData =   response.as(HashMap.class);
+        Map<String, Object> actualData = response.as(HashMap.class);
         System.out.println("actualData = " + actualData);
-        Assert.assertEquals(200,response.statusCode());
-        Assert.assertEquals(expectedData.get("completed"),actualData.get("completed"));
-        Assert.assertEquals(expectedData.get("title"),actualData.get("title"));
-        Assert.assertEquals(expectedData.get("userId"),actualData.get("userId"));
+        Assert.assertEquals(200, response.statusCode());
+        Assert.assertEquals(expectedData.get("completed"), actualData.get("completed"));
+        Assert.assertEquals(expectedData.get("title"), actualData.get("title"));
+        Assert.assertEquals(expectedData.get("userId"), actualData.get("userId"));
 
     }
 }

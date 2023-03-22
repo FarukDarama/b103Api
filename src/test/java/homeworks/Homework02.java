@@ -1,4 +1,4 @@
-package get_requests;
+package homeworks;
 
 import base_urls.HerOkuAppBaseUrl;
 import base_urls.ReqresBaseUrl;

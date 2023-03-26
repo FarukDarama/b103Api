@@ -102,7 +102,7 @@ public class GetCustomer extends GmiBankBaseUrl {
         Response response = given(spec).headers("Authorization", "Bearer "+generateTokenGmiBank()).get("/{first}/{second}/{third}");
         response.prettyPrint();
 //        iv)  Do assertion
-        Customer actualData =ObjectMapperUtils.convertJsonToJava(response.asString(), Customer
+        Customer actualData =ObjectMapperUtils.convertJsonToJava(response.asString(), Customer.class);
         Assert.assertEquals(200,response.statusCode());
         Assert.assertEquals(expectedData.getFirstName(),actualData.getFirstName());
         Assert.assertEquals(expectedData.getLastName(),actualData.getLastName());

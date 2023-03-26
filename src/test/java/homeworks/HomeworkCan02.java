@@ -1,12 +1,10 @@
 package homeworks;
 
 import base_urls.ZippopotamBaseUrl;
-import com.fasterxml.jackson.databind.util.CompactStringObjectMap;
 import io.restassured.response.Response;
 import org.junit.Assert;
 import org.junit.Test;
-import test_data.ZipopotTestData;
-import util.ObjectMapperUtils;
+import test_data.ZipopotomTestData;
 
 import java.util.HashMap;
 import java.util.List;
@@ -19,7 +17,7 @@ public class HomeworkCan02 extends ZippopotamBaseUrl {
     public void name() {
         spec.pathParams("first", "ES", "second", "01001");
         //set the expected data
-        ZipopotTestData expectedPlace = new ZipopotTestData();
+        ZipopotomTestData expectedPlace = new ZipopotomTestData();
         List<Map<String, String>> listPlaces = expectedPlace.expectedInMethod("Vitoria-Gasteiz", "-2.6667", "Pais Vasco", "PV", "42.85");
         Map<String, Object> expectedData = expectedPlace.expectedDataMethod("01001", "Spain", "ES", listPlaces);
         //send the request get the ressponse

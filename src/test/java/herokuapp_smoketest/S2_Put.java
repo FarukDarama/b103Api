@@ -59,14 +59,14 @@ public class S2_Put extends HerOkuAppBaseUrl {
 
     @Test
     public void put01() {
-        spec.pathParams("first", "todos", "second", bookingId);
+        spec.pathParams("first", "booking", "second", bookingId);
         //set the expected data
         BookingDatesPojo bookingDatesPojo = new BookingDatesPojo("2018-01-01", "2019-01-01");
         BookingPojo expectedData = new BookingPojo("Ali", "Can", 111, true, bookingDatesPojo, "Breakfast");
         System.out.println("expectedData = " + expectedData);
         //Send the request get the response
         Response response = given().
-                spec(spec).accept(ContentType.JSON).
+                spec(spec).
                 body(expectedData).put("/{first}/{second}");
         response.prettyPrint();
         BookingPojo actualData = ObjectMapperUtils.convertJsonToJava(response.asString(), BookingPojo.class);

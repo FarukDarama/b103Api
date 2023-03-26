@@ -72,12 +72,9 @@ public class S1_Post extends HerOkuAppBaseUrl {
         assertEquals(expectedData.getLastname(), actualData.getBooking().getLastname());
         assertEquals(expectedData.getTotalprice(), actualData.getBooking().getTotalprice());
         assertEquals(expectedData.getDepositpaid(), actualData.getBooking().getDepositpaid());
-
         assertEquals(bookingDatesPojo.getCheckin(), actualData.getBooking().getBookingdates().getCheckin());
         assertEquals(bookingDatesPojo.getCheckout(), actualData.getBooking().getBookingdates().getCheckout());
-
         assertEquals(expectedData.getAdditionalneeds(), actualData.getBooking().getAdditionalneeds());
-
         bookingId = actualData.getBookingid();
 
     }

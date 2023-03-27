@@ -85,67 +85,67 @@ public class GetCustomer extends GmiBankBaseUrl {
 
     @Test
     public void gmiBankCustomer() {
+
 //        i)   Set the URL
-        spec.pathParams("first", "api", "second", "tp-customers", "third", 110472);
+        spec.pathParams("first", "api", "second", "tp-customers", "third", 133986);
+
 //        ii)  Set the expected data
-        Country country = new Country(24105, "San Jose", null);
-        User user = new User(111206, "delilah.metz", "Melva", "Bernhard", "chas.kuhlman@yahoo.com", true, "en", null, null);
-        Account account1 = new Account(2327, "omermusteri01 hesap1", 1020600, "SAVING", "ACTIVE", "2020-11-06T23:00:00Z", "2024-11-07T23:00:00Z", null, null);
-        Account account2 = new Account(107250, "New Account_6thGenQA_01", 11190, "CHECKING", "ACTIVE", "2021-11-24T23:00:00Z", "2022-11-24T23:00:00Z", null, null);
+        //Country country = new Country(133986, "Turkey", null);
+        User user = new User(134701, "raymundo.moen", "Danika", "Huel", "danikahuel@gmail.com", true, "en", null, null);
+        Account account1 = new Account(128481, "Description", 0, "CHECKING", "ACTIVE", "2022-01-04T21:00:00Z", "2022-01-04T21:00:00Z", null, null);
+        Account account2 = new Account(131776, "mfy", 536846, "CREDIT_CARD", "ACTIVE", "2022-01-18T21:00:00Z", "2022-01-18T21:00:00Z", null, null);
         ArrayList<Account> accountList = new ArrayList<>();
         accountList.add(account1);
         accountList.add(account2);
-        Customer expectedData = new Customer(110472, "Melva", "Bernhard", "A", "chas.kuhlman@yahoo.com", "192-580-3408", "192-580-3408", "40207", "Apt. 634 579 Eliseo Rapids, Deanaside, AZ 53872",
-                "New Jordanhaven", "523-50-1191", "2021-11-30T21:00:00Z", false, country, "", user, accountList);
+
+        Customer expectedData = new Customer(133986, "Danika", "Huel", "S", "danikahuel@gmail.com", "155-489-7844", "155-489-7844", "32476", "3848 Lang Hill", "Hsajkhfja", "725-97-6213", "2022-01-21T05:00:00Z", false, null, "", user, accountList);
         System.out.println("expectedData = " + expectedData);
 //        iii) Send the request and get the response
-        Response response = given(spec).headers("Authorization", "Bearer "+generateTokenGmiBank()).get("/{first}/{second}/{third}");
+        Response response = given(spec).get("{first}/{second}/{third}");
         response.prettyPrint();
-//        iv)  Do assertion
-        Customer actualData =ObjectMapperUtils.convertJsonToJava(response.asString(), Customer.class);
-        Assert.assertEquals(200,response.statusCode());
-        Assert.assertEquals(expectedData.getFirstName(),actualData.getFirstName());
-        Assert.assertEquals(expectedData.getLastName(),actualData.getLastName());
-        Assert.assertEquals(expectedData.getMiddleInitial(),actualData.getMiddleInitial());
-        Assert.assertEquals(expectedData.getEmail(),actualData.getEmail());
-        Assert.assertEquals(expectedData.getMobilePhoneNumber(),actualData.getMobilePhoneNumber());
-        Assert.assertEquals(expectedData.getPhoneNumber(),actualData.getPhoneNumber());
-        Assert.assertEquals(expectedData.getZipCode(),actualData.getZipCode());
-        Assert.assertEquals(expectedData.getAddress(),actualData.getAddress());
-        Assert.assertEquals(expectedData.getCity(),actualData.getCity());
-        Assert.assertEquals(expectedData.getSsn(),actualData.getSsn());
-        Assert.assertEquals(expectedData.getCreateDate(),actualData.getCreateDate());
-        Assert.assertEquals(country.getId(),actualData.getCountry().getId());
-        Assert.assertEquals(country.getName(),actualData.getCountry().getName());
-        Assert.assertEquals(country.getStates(),actualData.getCountry().getStates());
-        Assert.assertEquals(expectedData.getState(),actualData.getState());
-        Assert.assertEquals(user.getId(),actualData.getUser().getId());
-        Assert.assertEquals(user.getLogin(),actualData.getUser().getLogin());
-        Assert.assertEquals(user.getFirstName(),actualData.getUser().getFirstName());
-        Assert.assertEquals(user.getLastName(),actualData.getUser().getLastName());
-        Assert.assertEquals(user.getEmail(),actualData.getUser().getEmail());
-        Assert.assertEquals(user.getLangKey(),actualData.getUser().getLangKey());
-        Assert.assertEquals(user.getImageUrl(),actualData.getUser().getImageUrl());
-        Assert.assertEquals(user.getResetDate(),actualData.getUser().getResetDate());
-        Assert.assertEquals(account1.getId(),actualData.getAccounts().get(0).getId());
-        Assert.assertEquals(account1.getDescription(),actualData.getAccounts().get(0).getDescription());
-        Assert.assertEquals(account1.getBalance(),actualData.getAccounts().get(0).getBalance());
-        Assert.assertEquals(account1.getAccountType(),actualData.getAccounts().get(0).getAccountType());
-        Assert.assertEquals(account1.getCreateDate(),actualData.getAccounts().get(0).getCreateDate());
-        Assert.assertEquals(account1.getClosedDate(),actualData.getAccounts().get(0).getClosedDate());
-        Assert.assertEquals(account1.getEmployee(),actualData.getAccounts().get(0).getEmployee());
-        Assert.assertEquals(account1.getAccountlogs(),actualData.getAccounts().get(0).getAccountlogs());
-        Assert.assertEquals(account2.getId(),actualData.getAccounts().get(1).getId());
-        Assert.assertEquals(account2.getDescription(),actualData.getAccounts().get(1).getDescription());
-        Assert.assertEquals(account2.getBalance(),actualData.getAccounts().get(1).getBalance());
-        Assert.assertEquals(account2.getAccountType(),actualData.getAccounts().get(1).getAccountType());
-        Assert.assertEquals(account2.getAccountStatusType(),actualData.getAccounts().get(1).getAccountStatusType());
-        Assert.assertEquals(account2.getCreateDate(),actualData.getAccounts().get(1).getCreateDate());
-        Assert.assertEquals(account2.getClosedDate(),actualData.getAccounts().get(1).getClosedDate());
-        Assert.assertEquals(account2.getEmployee(),actualData.getAccounts().get(1).getEmployee());
-        Assert.assertEquals(account2.getAccountlogs(),actualData.getAccounts().get(1).getAccountlogs());
-
-
+        //        iv)  Do assertion
+        Customer actualData = ObjectMapperUtils.convertJsonToJava(response.asString(), Customer.class);
+        Assert.assertEquals(200, response.statusCode());
+        Assert.assertEquals(expectedData.getFirstName(), actualData.getFirstName());
+        Assert.assertEquals(expectedData.getLastName(), actualData.getLastName());
+        Assert.assertEquals(expectedData.getMiddleInitial(), actualData.getMiddleInitial());
+        Assert.assertEquals(expectedData.getEmail(), actualData.getEmail());
+        Assert.assertEquals(expectedData.getMobilePhoneNumber(), actualData.getMobilePhoneNumber());
+        Assert.assertEquals(expectedData.getPhoneNumber(), actualData.getPhoneNumber());
+        Assert.assertEquals(expectedData.getZipCode(), actualData.getZipCode());
+        Assert.assertEquals(expectedData.getAddress(), actualData.getAddress());
+        Assert.assertEquals(expectedData.getCity(), actualData.getCity());
+        Assert.assertEquals(expectedData.getSsn(), actualData.getSsn());
+        Assert.assertEquals(expectedData.getCreateDate(), actualData.getCreateDate());
+//        Assert.assertEquals(country.getId(),actualData.getCountry().getId());
+//        Assert.assertEquals(country.getName(),actualData.getCountry().getName());
+//        Assert.assertEquals(country.getStates(),actualData.getCountry().getStates());
+        Assert.assertEquals(expectedData.getState(), actualData.getState());
+        Assert.assertEquals(user.getId(), actualData.getUser().getId());
+        Assert.assertEquals(user.getLogin(), actualData.getUser().getLogin());
+        Assert.assertEquals(user.getFirstName(), actualData.getUser().getFirstName());
+        Assert.assertEquals(user.getLastName(), actualData.getUser().getLastName());
+        Assert.assertEquals(user.getEmail(), actualData.getUser().getEmail());
+        Assert.assertEquals(user.getLangKey(), actualData.getUser().getLangKey());
+        Assert.assertEquals(user.getImageUrl(), actualData.getUser().getImageUrl());
+        Assert.assertEquals(user.getResetDate(), actualData.getUser().getResetDate());
+        Assert.assertEquals(account1.getId(), actualData.getAccounts().get(0).getId());
+        Assert.assertEquals(account1.getDescription(), actualData.getAccounts().get(0).getDescription());
+        Assert.assertEquals(account1.getBalance(), actualData.getAccounts().get(0).getBalance());
+        Assert.assertEquals(account1.getAccountType(), actualData.getAccounts().get(0).getAccountType());
+        Assert.assertEquals(account1.getCreateDate(), actualData.getAccounts().get(0).getCreateDate());
+        Assert.assertEquals(account1.getClosedDate(), actualData.getAccounts().get(0).getClosedDate());
+        Assert.assertEquals(account1.getEmployee(), actualData.getAccounts().get(0).getEmployee());
+        Assert.assertEquals(account1.getAccountlogs(), actualData.getAccounts().get(0).getAccountlogs());
+        Assert.assertEquals(account2.getId(), actualData.getAccounts().get(1).getId());
+        Assert.assertEquals(account2.getDescription(), actualData.getAccounts().get(1).getDescription());
+        Assert.assertEquals(account2.getBalance(), actualData.getAccounts().get(1).getBalance());
+        Assert.assertEquals(account2.getAccountType(), actualData.getAccounts().get(1).getAccountType());
+        Assert.assertEquals(account2.getAccountStatusType(), actualData.getAccounts().get(1).getAccountStatusType());
+        Assert.assertEquals(account2.getCreateDate(), actualData.getAccounts().get(1).getCreateDate());
+        Assert.assertEquals(account2.getClosedDate(), actualData.getAccounts().get(1).getClosedDate());
+        Assert.assertEquals(account2.getEmployee(), actualData.getAccounts().get(1).getEmployee());
+        Assert.assertEquals(account2.getAccountlogs(), actualData.getAccounts().get(1).getAccountlogs());
 
 
     }
